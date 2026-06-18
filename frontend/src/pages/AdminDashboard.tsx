@@ -31,6 +31,9 @@ export default function AdminDashboard() {
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
 
+  // 인라인 삭제 확인 상태: 삭제 대상 프로젝트 id (null이면 비활성)
+  const [deletingProjectId, setDeletingProjectId] = useState<number | null>(null);
+
   // 토큰 없으면 로그인 페이지로 리다이렉트
   useEffect(() => {
     if (!token) {
@@ -51,15 +54,27 @@ export default function AdminDashboard() {
     navigate('/admin');
   };
 
-  // 프로젝트 삭제 핸들러
-  const handleDeleteProject = async (project: Project) => {
-    if (!window.confirm(`"${project.title}" 프로젝트를 삭제하시겠습니까?`)) return;
+  // 삭제 요청: 해당 행을 확인 UI 상태로 전환
+  const handleDeleteRequest = (id: number) => {
+    setDeletingProjectId(id);
+  };
+
+  // 삭제 확인: 실제 API 호출 후 목록 갱신
+  const handleDeleteConfirm = async () => {
+    if (!deletingProjectId) return;
     try {
-      await api.delete(`/api/v1/projects/${project.id}`);
+      await api.delete(`/api/v1/projects/${deletingProjectId}`);
       await queryClient.invalidateQueries({ queryKey: ['projects'] });
     } catch {
       alert('프로젝트 삭제 중 오류가 발생했습니다.');
+    } finally {
+      setDeletingProjectId(null);
     }
+  };
+
+  // 삭제 취소: 확인 UI 닫기
+  const handleDeleteCancel = () => {
+    setDeletingProjectId(null);
   };
 
   // 새 프로젝트 추가 모달 열기
@@ -257,8 +272,11 @@ export default function AdminDashboard() {
                   <ProjectTableRow
                     key={project.id}
                     project={project}
+                    isDeleting={deletingProjectId === project.id}
                     onEdit={() => handleEditProject(project)}
-                    onDelete={() => handleDeleteProject(project)}
+                    onDeleteRequest={() => handleDeleteRequest(project.id)}
+                    onDeleteConfirm={handleDeleteConfirm}
+                    onDeleteCancel={handleDeleteCancel}
                   />
                 ))}
               </tbody>
@@ -317,11 +335,14 @@ export default function AdminDashboard() {
 // 프로젝트 테이블 행 컴포넌트 (분리하여 가독성 향상)
 interface ProjectTableRowProps {
   project: Project;
+  isDeleting: boolean;
   onEdit: () => void;
-  onDelete: () => void;
+  onDeleteRequest: () => void;
+  onDeleteConfirm: () => void;
+  onDeleteCancel: () => void;
 }
 
-function ProjectTableRow({ project, onEdit, onDelete }: ProjectTableRowProps) {
+function ProjectTableRow({ project, isDeleting, onEdit, onDeleteRequest, onDeleteConfirm, onDeleteCancel }: ProjectTableRowProps) {
   // tech_stack JSON 파싱 (최대 3개 표시)
   let techStack: string[] = [];
   try {
@@ -372,24 +393,42 @@ function ProjectTableRow({ project, onEdit, onDelete }: ProjectTableRowProps) {
         </div>
       </td>
 
-      {/* 수정/삭제 버튼 */}
+      {/* 수정/삭제 버튼 또는 인라인 삭제 확인 UI */}
       <td className="py-md px-md text-right">
-        <div className="row-actions flex justify-end gap-xs">
-          <button
-            onClick={onEdit}
-            title="수정"
-            className="p-1 hover:bg-surface-container-high rounded text-secondary transition-colors"
-          >
-            <span className="material-symbols-outlined text-[18px]">edit</span>
-          </button>
-          <button
-            onClick={onDelete}
-            title="삭제"
-            className="p-1 hover:bg-error-container rounded text-error transition-colors"
-          >
-            <span className="material-symbols-outlined text-[18px]">delete</span>
-          </button>
-        </div>
+        {isDeleting ? (
+          <div className="flex items-center justify-end gap-sm">
+            <span className="text-body-sm text-on-surface-variant">삭제할까요?</span>
+            <button
+              onClick={onDeleteConfirm}
+              className="text-error text-body-sm font-medium px-sm py-xs hover:bg-error-container rounded transition-colors"
+            >
+              확인
+            </button>
+            <button
+              onClick={onDeleteCancel}
+              className="text-on-surface-variant text-body-sm px-sm py-xs hover:bg-surface-container rounded transition-colors"
+            >
+              취소
+            </button>
+          </div>
+        ) : (
+          <div className="row-actions flex justify-end gap-xs">
+            <button
+              onClick={onEdit}
+              title="수정"
+              className="p-1 hover:bg-surface-container-high rounded text-secondary transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">edit</span>
+            </button>
+            <button
+              onClick={onDeleteRequest}
+              title="삭제"
+              className="p-1 hover:bg-error-container rounded text-error transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        )}
       </td>
     </tr>
   );
