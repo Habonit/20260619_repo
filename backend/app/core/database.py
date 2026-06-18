@@ -19,8 +19,14 @@ DATABASE_URL = (
     else _raw_url
 )
 
-# SQLite는 check_same_thread=False 필요, PostgreSQL은 불필요
-connect_args = {"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+# SQLite는 check_same_thread=False 필요
+# Railway 내부 PostgreSQL은 SSL을 지원하지 않으므로 ssl=False 필요
+if "sqlite" in DATABASE_URL:
+    connect_args: dict = {"check_same_thread": False}
+elif "postgresql" in DATABASE_URL:
+    connect_args = {"ssl": False}
+else:
+    connect_args = {}
 
 # 비동기 엔진 생성
 engine = create_async_engine(

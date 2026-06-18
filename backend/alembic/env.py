@@ -65,7 +65,13 @@ def do_run_migrations(connection: Connection) -> None:
 async def run_async_migrations() -> None:
     """비동기 엔진을 사용하여 마이그레이션을 실행한다."""
     # SQLite는 check_same_thread=False 필요
-    connect_args = {"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+    # Railway 내부 PostgreSQL은 SSL을 지원하지 않으므로 ssl=False 필요
+    if "sqlite" in DATABASE_URL:
+        connect_args: dict = {"check_same_thread": False}
+    elif "postgresql" in DATABASE_URL:
+        connect_args = {"ssl": False}
+    else:
+        connect_args = {}
 
     connectable = async_engine_from_config(
         config.get_section(config.config_ini_section, {}),

@@ -29,7 +29,12 @@ DATABASE_URL = (
     if _raw_url.startswith("postgresql://")
     else _raw_url
 )
-connect_args = {"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+if "sqlite" in DATABASE_URL:
+    connect_args: dict = {"check_same_thread": False}
+elif "postgresql" in DATABASE_URL:
+    connect_args = {"ssl": False}
+else:
+    connect_args = {}
 
 engine = create_async_engine(DATABASE_URL, connect_args=connect_args)
 AsyncSessionLocal = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
