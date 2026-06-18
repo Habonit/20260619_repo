@@ -10,8 +10,14 @@ from sqlalchemy.ext.asyncio import (
 )
 from sqlalchemy.orm import DeclarativeBase
 
-# DATABASE_URL 환경변수로 SQLite/PostgreSQL 분기 (절대 변경 금지)
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+# DATABASE_URL 환경변수로 SQLite/PostgreSQL 분기
+# Railway는 postgresql:// 형식으로 제공하므로 asyncpg용으로 자동 변환
+_raw_url = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+DATABASE_URL = (
+    _raw_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    if _raw_url.startswith("postgresql://")
+    else _raw_url
+)
 
 # SQLite는 check_same_thread=False 필요, PostgreSQL은 불필요
 connect_args = {"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
