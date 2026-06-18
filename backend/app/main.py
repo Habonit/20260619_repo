@@ -21,7 +21,7 @@ app = FastAPI(
 # CORS 미들웨어 등록 (프론트엔드에서 백엔드 API 호출 허용)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origins=settings.allowed_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
