@@ -18,3 +18,25 @@ body {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
 }
+
+/* 프로젝트 갤러리 그리드 레이아웃 */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* 프로젝트 상세 본문 캔버스 */
+.content-canvas {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 프로젝트 속성 테이블 행 */
+.property-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  padding: 4px 0;
+  align-items: center;
+}

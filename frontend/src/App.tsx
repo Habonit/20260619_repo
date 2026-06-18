@@ -1,24 +1,12 @@
 // 앱 루트 컴포넌트 - 라우팅 설정
-// 페이지 컴포넌트는 Task 4, 5에서 실제 구현 예정
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 
-// 플레이스홀더 페이지 컴포넌트 (Task 4에서 실제 구현)
-function Home() {
-  return <div className="max-w-[900px] mx-auto px-md py-xl text-on-surface">홈 페이지 (Task 4에서 구현)</div>;
-}
-
-function About() {
-  return <div className="max-w-[900px] mx-auto px-md py-xl text-on-surface">소개 페이지 (Task 4에서 구현)</div>;
-}
-
-function Projects() {
-  return <div className="max-w-[900px] mx-auto px-md py-xl text-on-surface">프로젝트 목록 (Task 4에서 구현)</div>;
-}
-
-function ProjectDetail() {
-  return <div className="max-w-[900px] mx-auto px-md py-xl text-on-surface">프로젝트 상세 (Task 4에서 구현)</div>;
-}
+// 공개 페이지 컴포넌트 (Task 4 구현 완료)
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 
 // 관리자 페이지 컴포넌트 (Task 5에서 실제 구현)
 function AdminLogin() {
