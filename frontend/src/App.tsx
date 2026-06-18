@@ -8,14 +8,9 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 
-// 관리자 페이지 컴포넌트 (Task 5에서 실제 구현)
-function AdminLogin() {
-  return <div className="min-h-screen bg-background flex items-center justify-center text-on-surface">관리자 로그인 (Task 5에서 구현)</div>;
-}
-
-function AdminDashboard() {
-  return <div className="min-h-screen bg-background text-on-surface p-md">관리자 대시보드 (Task 5에서 구현)</div>;
-}
+// 관리자 페이지 컴포넌트 (Task 5 구현)
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 export default function App() {
   return (
