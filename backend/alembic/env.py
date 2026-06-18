@@ -19,7 +19,13 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # DATABASE_URL 환경변수로 연결 URL 오버라이드
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+# Railway는 postgresql:// 형식으로 주입하므로 asyncpg 드라이버 형식으로 변환
+_raw_url = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+DATABASE_URL = (
+    _raw_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    if _raw_url.startswith("postgresql://")
+    else _raw_url
+)
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 # 모든 ORM 모델을 임포트하여 autogenerate가 변경사항을 감지하도록 한다

@@ -22,8 +22,13 @@ from app.models.user import User
 from app.models.profile import Profile
 from app.models.project import Project
 
-# DB 연결 설정
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+# DB 연결 설정 — Railway는 postgresql:// 형식으로 주입하므로 asyncpg 형식으로 변환
+_raw_url = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./dev.db")
+DATABASE_URL = (
+    _raw_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    if _raw_url.startswith("postgresql://")
+    else _raw_url
+)
 connect_args = {"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
 
 engine = create_async_engine(DATABASE_URL, connect_args=connect_args)
