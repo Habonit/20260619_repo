@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>프로젝트 상세 페이지 | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e2dfdb",
+                    "surface-container-low": "#f3f3f3",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary": "#21201a",
+                    "on-secondary-container": "#636360",
+                    "primary-fixed-dim": "#cbc6bd",
+                    "secondary-fixed": "#e5e2de",
+                    "inverse-primary": "#cbc6bd",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#1d1c16",
+                    "inverse-on-surface": "#f1f1f1",
+                    "background": "#f9f9f9",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#37352f",
+                    "on-primary-fixed-variant": "#494740",
+                    "on-surface-variant": "#49473f",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c8c6c3",
+                    "on-error": "#ffffff",
+                    "tertiary": "#002141",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004884",
+                    "secondary": "#5f5e5c",
+                    "on-secondary-fixed": "#1b1c1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#615e57",
+                    "on-primary-container": "#a19d95",
+                    "outline-variant": "#cbc6bc",
+                    "tertiary-container": "#003666",
+                    "on-error-container": "#93000a",
+                    "outline": "#7a776e",
+                    "surface-dim": "#dadada",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-secondary-fixed-variant": "#474744",
+                    "inverse-surface": "#2f3131",
+                    "on-background": "#1a1c1c",
+                    "surface-container": "#eeeeee",
+                    "primary-fixed": "#e7e2d9",
+                    "surface": "#f9f9f9",
+                    "on-tertiary-fixed": "#001c39",
+                    "on-tertiary-container": "#50a0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "sidebar-width": "240px",
+                    "lg": "24px",
+                    "container-max": "900px"
+            },
+            "fontFamily": {
+                    "h3": ["Inter"],
+                    "h1-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono": ["Courier Prime"],
+                    "h1": ["Inter"],
+                    "h2": ["Inter"],
+                    "label": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1-mobile": ["30px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #ffffff;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .notion-icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .content-canvas {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        .property-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            padding: 4px 0;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-background">
+<!-- Top Navigation Bar -->
+<nav class="w-full sticky top-0 z-50 bg-background border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
+<div class="font-h2 text-h2 font-bold text-primary">Portfolio</div>
+<div class="hidden md:flex items-center gap-md">
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer px-sm py-xs" href="#">Home</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer px-sm py-xs" href="#">About</a>
+<a class="font-body-lg text-body-lg text-primary font-semibold border-b-2 border-primary cursor-pointer px-sm py-xs" href="#">Projects</a>
+<div class="flex items-center gap-sm ml-md">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant">search</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant">account_circle</span>
+</div>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Shell -->
+<main class="w-full pb-xl">
+<!-- Cover Image -->
+<div class="w-full h-[307px] overflow-hidden bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, wide-angle shot of a minimalist workspace with a sleek laptop, an architectural model, and soft natural morning light streaming through a large window. The aesthetic is clean, professional, and sophisticated, dominated by soft grays and warm wood tones. High-end photography style with shallow depth of field, reflecting a mood of calm productivity and focused design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3aoLgeFhfOfNbzQJKyBqw26K0RcnwIossNuhAvWCrkfon4IqAJsolG42e34QrfufQTSYpd9NyViNze5hiji9YM-mEyNco93g4qCEkJ3pzNkhX6FXxyWU2pWpmB8AeGg_LDG42wXI5u9VLVQMWgz6rGhPiiWE9LTr5DapPwH6JK0o01MPAbp2ftlPQoEoyYbtw14sQhKntbFbk1kOfwCpkpscv_hxqzY48RA20tM4zUpOxmdWHRVkLHzrPqIXBhM0BwBy7FS3B5PI')"></div>
+</div>
+<div class="content-canvas -mt-12 relative z-10">
+<!-- Icon / Emoji -->
+<div class="text-6xl mb-md">🚀</div>
+<!-- Project Title -->
+<h1 class="font-h1 text-h1 text-primary mb-lg">차세대 지식 관리 시스템 (KMS) 고도화</h1>
+<!-- Properties List -->
+<section class="mb-xl space-y-xs">
+<div class="property-row">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined notion-icon">calendar_today</span>
+<span>기간</span>
+</div>
+<div class="text-on-surface font-body-sm">2023년 10월 - 2024년 2월 (5개월)</div>
+</div>
+<div class="property-row">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined notion-icon">person</span>
+<span>역할</span>
+</div>
+<div class="flex gap-xs">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg text-label">UI/UX Designer</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg text-label">Frontend Lead</span>
+</div>
+</div>
+<div class="property-row">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined notion-icon">terminal</span>
+<span>기술 스택</span>
+</div>
+<div class="text-on-surface font-body-sm">React, Tailwind CSS, Notion API, Framer Motion</div>
+</div>
+<div class="property-row">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined notion-icon">link</span>
+<span>URL</span>
+</div>
+<a class="text-on-surface font-body-sm underline underline-offset-4 opacity-80 hover:opacity-100" href="#">https://kms-next-gen.io</a>
+</div>
+</section>
+<hr class="border-outline-variant mb-xl"/>
+<!-- Problem Section -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined">report_problem</span>
+                    문제 정의 (Problem)
+                </h2>
+<div class="bg-error-container/20 border-l-4 border-error p-lg rounded-lg mb-md">
+<p class="font-body-lg text-body-lg text-on-surface">기존 사내 지식 관리 시스템은 파편화된 문서 구조와 느린 검색 성능으로 인해 구성원들이 필요한 정보를 찾는 데 평균 15분 이상을 소요하고 있었습니다.</p>
+</div>
+<ul class="list-disc pl-lg space-y-sm text-on-surface-variant font-body-lg">
+<li>방대한 데이터 대비 낮은 인덱싱 효율성</li>
+<li>사용자 중심의 UI 부재로 인한 낮은 사용률</li>
+<li>모바일 환경에서의 접근성 부족</li>
+</ul>
+</section>
+<!-- Process Section (Toggles) -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined">architecture</span>
+                    해결 과정 (Process)
+                </h2>
+<div class="space-y-sm">
+<details class="group bg-white border border-outline-variant rounded-xl overflow-hidden" open="">
+<summary class="flex items-center justify-between p-md hover:bg-surface-container-low transition-all">
+<span class="font-h3 text-h3 text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">search</span>
+                                01. 사용자 리서치 및 인터뷰
+                            </span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-lg">
+<p class="mb-sm">현업 종사자 20명을 대상으로 심층 인터뷰를 진행하여 '가장 많이 찾는 정보'의 카테고리를 분류하고 가독성을 저해하는 요소를 파악했습니다.</p>
+<img class="w-full rounded-lg border border-outline-variant my-md" data-alt="A clean, minimalist chart depicting user research results with soft muted tones. The chart is presented on a white paper-like background with thin gray lines and elegant typography. Professional data visualization style with a focus on clarity and simplicity, avoiding clutter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLUPjtq6ueXYcvaiO6LRl_9N1VjXnVpY6cky2YqzjGaoRIsL4NePJGtJWn6fH93_hXcBeZz2H9E-EvHvB5XzhrH50ErZdrS8KJdyFcVDRKcbtBg62lSzsMd6mRRJByg8BRFYcPDK_I9U5ItZ8VnV1_w3qt7hvjEKWvbTOyC1UytejtW-GxndKMXh7dmSmrsF22o2qyqzhZeAUJnZXABXwPq0vzAI_KEEsf6JbkEjc2ruuYwjy2Jtv2Va7ydMzgEgA1RWVPjrSkL_k"/>
+</div>
+</details>
+<details class="group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex items-center justify-between p-md hover:bg-surface-container-low transition-all">
+<span class="font-h3 text-h3 text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">draw</span>
+                                02. 인터페이스 프로토타이핑
+                            </span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-lg">
+<p>노션의 블록 기반 구조를 벤치마킹하여 정보의 계층 구조를 명확히 했습니다. 1px 그리드 시스템과 넉넉한 여백(Whitespace)을 활용하여 시각적 피로도를 최소화했습니다.</p>
+</div>
+</details>
+<details class="group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex items-center justify-between p-md hover:bg-surface-container-low transition-all">
+<span class="font-h3 text-h3 text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">code</span>
+                                03. 기술적 최적화 (Indexing)
+                            </span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-lg">
+<p>ElasticSearch를 도입하여 검색 반응 속도를 2초에서 0.3초 이내로 단축시켰으며, 클라이언트 사이드 캐싱 기술을 통해 빈번하게 접근하는 문서의 로딩 속도를 개선했습니다.</p>
+</div>
+</details>
+</div>
+</section>
+<!-- Results Section -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined">check_circle</span>
+                    결과 및 성과 (Results)
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="p-lg bg-surface-container rounded-xl border border-outline-variant text-center">
+<div class="text-h1 font-h1 text-primary mb-xs">85%</div>
+<div class="font-label text-label text-secondary uppercase">검색 시간 단축</div>
+</div>
+<div class="p-lg bg-surface-container rounded-xl border border-outline-variant text-center">
+<div class="text-h1 font-h1 text-primary mb-xs">40%</div>
+<div class="font-label text-label text-secondary uppercase">월간 활성 사용자 증가</div>
+</div>
+<div class="p-lg bg-surface-container rounded-xl border border-outline-variant text-center">
+<div class="text-h1 font-h1 text-primary mb-xs">4.8/5</div>
+<div class="font-label text-label text-secondary uppercase">사용자 만족도 점수</div>
+</div>
+</div>
+<div class="mt-lg p-lg bg-surface-container-low rounded-xl border border-outline-variant italic font-body-lg text-on-surface-variant">
+                    "새로운 시스템 덕분에 신규 입사자 온보딩 과정에서 지식을 습득하는 데 걸리는 시간이 절반 이하로 줄어들었습니다." - 개발팀 리드 A님
+                </div>
+</section>
+<!-- Navigation Button -->
+<div class="flex justify-start mt-xl pt-xl border-t border-outline-variant">
+<button class="flex items-center gap-sm px-lg py-md rounded-lg border border-outline hover:bg-surface-container-high transition-all font-body-lg text-primary" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+                    목록으로 돌아가기
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-outline-variant mt-xl py-xl bg-transparent">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="font-label text-label text-secondary">
+                © 2024 Personal Portfolio. Built with minimalist intent.
+            </div>
+<div class="flex gap-lg">
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        // Smooth hover effect for properties rows
+        const rows = document.querySelectorAll('.property-row');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.backgroundColor = '#f9f9f9';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.backgroundColor = 'transparent';
+            });
+        });
+
+        // Simple Fade-in animation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const content = document.querySelector('.content-canvas');
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            content.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+            
+            setTimeout(() => {
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio | About</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e2dfdb",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary": "#21201a",
+                        "on-secondary-container": "#636360",
+                        "primary-fixed-dim": "#cbc6bd",
+                        "secondary-fixed": "#e5e2de",
+                        "inverse-primary": "#cbc6bd",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#1d1c16",
+                        "inverse-on-surface": "#f1f1f1",
+                        "background": "#f9f9f9",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#37352f",
+                        "on-primary-fixed-variant": "#494740",
+                        "on-surface-variant": "#49473f",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#c8c6c3",
+                        "on-error": "#ffffff",
+                        "tertiary": "#002141",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004884",
+                        "secondary": "#5f5e5c",
+                        "on-secondary-fixed": "#1b1c1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#615e57",
+                        "on-primary-container": "#a19d95",
+                        "outline-variant": "#cbc6bc",
+                        "tertiary-container": "#003666",
+                        "on-error-container": "#93000a",
+                        "outline": "#7a776e",
+                        "surface-dim": "#dadada",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-secondary-fixed-variant": "#474744",
+                        "inverse-surface": "#2f3131",
+                        "on-background": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed": "#e7e2d9",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-fixed": "#001c39",
+                        "on-tertiary-container": "#50a0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "lg": "24px",
+                        "container-max": "900px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Inter"],
+                        "h1-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono": ["courierPrime"],
+                        "h1": ["Inter"],
+                        "h2": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1-mobile": ["30px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        .notion-callout {
+            border: 1px solid #e9e9e8;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: start;
+        }
+        .notion-card {
+            border: 1px solid #e9e9e8;
+            background: #ffffff;
+            transition: background 0.2s;
+        }
+        .notion-card:hover {
+            background: #f1f1f1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar Shell -->
+<nav class="w-full sticky top-0 z-50 bg-background border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
+<div class="font-h2 text-h2 font-bold text-primary">Portfolio</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-lg text-body-lg" href="#">Home</a>
+<a class="text-primary font-semibold border-b-2 border-primary px-sm py-xs font-body-lg text-body-lg" href="#">About</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-lg text-body-lg" href="#">Projects</a>
+<div class="flex items-center gap-sm ml-md">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant">search</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant">account_circle</span>
+</div>
+</div>
+<!-- Mobile Menu Toggle (Simplified) -->
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</nav>
+<div class="flex max-w-container-max mx-auto min-h-screen">
+<!-- SideNavBar Shell (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col gap-xs p-md w-sidebar-width border-r border-outline-variant bg-surface-container-low">
+<div class="mb-lg px-md">
+<div class="font-h3 text-h3 font-semibold text-primary">👋 Welcome</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Kim Min-su's Space</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm px-md py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-sm text-body-sm">Profile</span>
+</div>
+<div class="flex items-center gap-sm px-md py-xs rounded-lg bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-sm text-body-sm">Experience</span>
+</div>
+<div class="flex items-center gap-sm px-md py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-body-sm text-body-sm">Projects</span>
+</div>
+<div class="flex items-center gap-sm px-md py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area (Canvas) -->
+<main class="flex-1 px-md md:px-xl py-xl overflow-y-auto">
+<!-- Hero Section -->
+<header class="mb-xl">
+<h1 class="font-h1 text-h1 mb-sm">✨ 안녕하세요, 김민수입니다</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[700px]">
+                    데이터와 디자인의 교차점에서 문제를 해결하는 것을 즐깁니다. 미니멀리즘과 효율성을 바탕으로 더 나은 사용자 경험을 만듭니다.
+                </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl">
+<!-- Left: Profile Info -->
+<section class="md:col-span-4 flex flex-col gap-lg">
+<div class="rounded-xl overflow-hidden border border-outline-variant bg-white aspect-square">
+<img class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a young South Korean male designer in a bright, minimalist studio. He is wearing a clean charcoal gray turtleneck. The lighting is soft and natural, emphasizing a calm and focused productivity atmosphere. The background is a clean off-white wall with subtle architectural shadows, matching a Notion-style aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZvTQduIfRDahmXyU7wn_NCAty32kahL2_zwE_Z0WmcrGNDY9XPbehHZsVgB2AFxT6BvLQQiycY6M4e-qzSE1GP8xamzM56EAJ0VBwccpOTFqdhPcbfICas0wJ0K35eip3wjzXs0LOwT_0XniOQSLWiYjFppVPcBQ5TX2DWMk6fuXRYvafTJArGh9AlxRIMuM-yXGYF4ILl5af54rWctJILZZEZWpphciy-aIC1Gawyfp5Fzbcj5LPmXXiSt2AbsjnSI32TRyDv-k"/>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<span class="font-label text-label text-on-surface-variant uppercase">Name</span>
+<span class="font-body-lg text-body-lg font-medium">김민수 (Min-su Kim)</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label text-label text-on-surface-variant uppercase">Location</span>
+<span class="font-body-lg text-body-lg font-medium">📍 서울특별시 강남구</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label text-label text-on-surface-variant uppercase">Status</span>
+<span class="font-body-lg text-body-lg font-medium">🚀 Open for Opportunities</span>
+</div>
+</div>
+<!-- Contact Database Style -->
+<div class="flex flex-col gap-sm">
+<h3 class="font-label text-label text-on-surface-variant border-b border-outline-variant pb-xs mb-xs uppercase">Contact</h3>
+<a class="flex items-center gap-sm p-sm notion-card rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">mail</span>
+<span class="font-body-sm text-body-sm">minsu.dev@example.com</span>
+</a>
+<a class="flex items-center gap-sm p-sm notion-card rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">link</span>
+<span class="font-body-sm text-body-sm">linkedin.com/in/minsu</span>
+</a>
+</div>
+</section>
+<!-- Right: Detailed Info -->
+<section class="md:col-span-8 flex flex-col gap-xl">
+<!-- Bio Paragraph -->
+<div class="notion-callout bg-surface-container-low border-none">
+<span class="text-2xl">📝</span>
+<div>
+<p class="font-body-lg text-body-lg leading-relaxed">
+                                저는 5년 차 프로덕트 디자이너로서 복잡한 시스템을 단순하고 직관적인 인터페이스로 시각화하는 일에 전념하고 있습니다. 특히 사용자의 행동 데이터를 분석하여 디자인 결정을 내리는 프로세스를 선호하며, 개발팀과의 긴밀한 협업을 통해 기술적 제약 안에서 최선의 심미성을 찾아내는 데 강점이 있습니다.
+                            </p>
+</div>
+</div>
+<!-- Experience Database -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between border-b border-outline-variant pb-sm">
+<h2 class="font-h2 text-h2 flex items-center gap-sm">💼 경력 사항</h2>
+<span class="font-label text-label text-on-surface-variant bg-surface-container-high px-sm py-xs rounded">Total 5 Years</span>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Exp Card 1 -->
+<div class="p-md notion-card rounded-lg flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<span class="font-body-lg text-body-lg font-bold">시니어 프로덕트 디자이너</span>
+<span class="font-label text-label text-on-surface-variant">2021 - 현재</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-tertiary-fixed-variant font-medium">테크포워드 (TechForward)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">
+                                    • SaaS 대시보드 리뉴얼 프로젝트 리드 (사용자 이탈률 15% 감소)<br/>
+                                    • 전사 디자인 시스템 구축 및 가이드라인 정립
+                                </p>
+</div>
+<!-- Exp Card 2 -->
+<div class="p-md notion-card rounded-lg flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<span class="font-body-lg text-body-lg font-bold">주니어 UI/UX 디자이너</span>
+<span class="font-label text-label text-on-surface-variant">2019 - 2021</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-tertiary-fixed-variant font-medium">크리에이티브 스튜디오</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">
+                                    • 모바일 커머스 앱 인터페이스 디자인 및 프로토타이핑<br/>
+                                    • 주간 사용자 피드백 세션 운영 및 UX 개선안 도출
+                                </p>
+</div>
+</div>
+</div>
+<!-- Certifications & Awards Board Style -->
+<div class="flex flex-col gap-md">
+<h2 class="font-h2 text-h2 border-b border-outline-variant pb-sm">🏆 자격 및 수상</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="p-md notion-card rounded-lg flex items-center gap-md">
+<div class="text-3xl">🥇</div>
+<div>
+<div class="font-body-sm text-body-sm font-bold">K-디자인 어워드 위너</div>
+<div class="font-label text-label text-on-surface-variant">2023 | 커뮤니케이션 부문</div>
+</div>
+</div>
+<div class="p-md notion-card rounded-lg flex items-center gap-md">
+<div class="text-3xl">🎓</div>
+<div>
+<div class="font-body-sm text-body-sm font-bold">Google UX Design 전문 자격</div>
+<div class="font-label text-label text-on-surface-variant">2022 | Coursera</div>
+</div>
+</div>
+<div class="p-md notion-card rounded-lg flex items-center gap-md">
+<div class="text-3xl">💻</div>
+<div>
+<div class="font-body-sm text-body-sm font-bold">정보처리기사</div>
+<div class="font-label text-label text-on-surface-variant">2019 | 한국산업인력공단</div>
+</div>
+</div>
+<div class="p-md notion-card rounded-lg flex items-center gap-md">
+<div class="text-3xl">🎨</div>
+<div>
+<div class="font-body-sm text-body-sm font-bold">GTQ 그래픽기술자격 1급</div>
+<div class="font-label text-label text-on-surface-variant">2018 | 한국생산성본부</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full py-xl border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md text-secondary">
+<span class="font-label text-label">© 2024 Personal Portfolio. Built with minimalist intent.</span>
+<div class="flex gap-md">
+<a class="font-label text-label hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">LinkedIn</a>
+<a class="font-label text-label hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">GitHub</a>
+<a class="font-label text-label hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('.notion-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.opacity = '0.7';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+                card.style.opacity = '1';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.opacity = '1';
+            });
+        });
+    </script>
+</body></html>

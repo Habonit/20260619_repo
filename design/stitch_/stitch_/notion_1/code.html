@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>김포트의 포트폴리오</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e2dfdb",
+                    "surface-container-low": "#f3f3f3",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary": "#21201a",
+                    "on-secondary-container": "#636360",
+                    "primary-fixed-dim": "#cbc6bd",
+                    "secondary-fixed": "#e5e2de",
+                    "inverse-primary": "#cbc6bd",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#1d1c16",
+                    "inverse-on-surface": "#f1f1f1",
+                    "background": "#f9f9f9",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#37352f",
+                    "on-primary-fixed-variant": "#494740",
+                    "on-surface-variant": "#49473f",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c8c6c3",
+                    "on-error": "#ffffff",
+                    "tertiary": "#002141",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004884",
+                    "secondary": "#5f5e5c",
+                    "on-secondary-fixed": "#1b1c1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#615e57",
+                    "on-primary-container": "#a19d95",
+                    "outline-variant": "#cbc6bc",
+                    "tertiary-container": "#003666",
+                    "on-error-container": "#93000a",
+                    "outline": "#7a776e",
+                    "surface-dim": "#dadada",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-secondary-fixed-variant": "#474744",
+                    "inverse-surface": "#2f3131",
+                    "on-background": "#1a1c1c",
+                    "surface-container": "#eeeeee",
+                    "primary-fixed": "#e7e2d9",
+                    "surface": "#f9f9f9",
+                    "on-tertiary-fixed": "#001c39",
+                    "on-tertiary-container": "#50a0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "sidebar-width": "240px",
+                    "lg": "24px",
+                    "container-max": "900px"
+            },
+            "fontFamily": {
+                    "h3": ["Inter"],
+                    "h1-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono": ["courierPrime"],
+                    "h1": ["Inter"],
+                    "h2": ["Inter"],
+                    "label": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1-mobile": ["30px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="w-full sticky top-0 z-50 bg-background border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
+<div class="font-h2 text-h2 font-bold text-primary">Portfolio</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-primary font-semibold border-b-2 border-primary font-body-lg text-body-lg cursor-pointer transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-lg text-body-lg cursor-pointer" href="#">About</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-lg text-body-lg cursor-pointer" href="#">Projects</a>
+</nav>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined cursor-pointer opacity-80 hover:opacity-100">search</span>
+<span class="material-symbols-outlined cursor-pointer opacity-80 hover:opacity-100">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md md:px-0 py-xl">
+<!-- Header Section -->
+<section class="mb-xl">
+<div class="flex flex-col gap-sm">
+<h1 class="font-h1 text-h1 text-on-surface tracking-tight">김포트의 포트폴리오</h1>
+<div class="flex items-center gap-sm mt-xs">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg font-label text-label uppercase tracking-widest">Full-Stack Developer</span>
+<span class="text-on-surface-variant font-body-lg text-body-lg opacity-70">김포트 (Kim Port)</span>
+</div>
+<p class="mt-md font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    비즈니스 문제를 기술로 해결하며 사용자에게 즐거운 경험을 제공하는 5년 차 개발자입니다. 효율적인 시스템 설계와 깔끔한 코드 작성을 지향합니다.
+                </p>
+<div class="flex gap-md mt-lg">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-body-lg text-body-lg font-semibold hover:opacity-90 transition-all flex items-center gap-xs">
+<span>프로젝트 보기</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="border border-outline-variant bg-surface-container-lowest text-primary px-lg py-sm rounded-xl font-body-lg text-body-lg font-semibold hover:bg-surface-container-low transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>이력서 다운로드</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Key Metrics Callouts (Bento Layout style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<div class="bg-[#f0f7ff] border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="text-h3">🚀</span>
+<span class="font-h3 text-h3 text-primary">주요 성과 01</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    기존 시스템 마이그레이션을 통해 서비스 응답 속도 <strong class="text-primary">40% 개선</strong> 및 서버 비용 절감.
+                </p>
+</div>
+<div class="bg-[#fefce8] border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="text-h3">👥</span>
+<span class="font-h3 text-h3 text-primary">주요 성과 02</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    신규 서비스 런칭 후 <strong class="text-primary">MAU 50,000명</strong> 돌파 및 결제 전환율 15% 상승 기여.
+                </p>
+</div>
+<div class="bg-[#f5f3ff] border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="text-h3">⚙️</span>
+<span class="font-h3 text-h3 text-primary">주요 성과 03</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    CI/CD 파이프라인 자동화 도입으로 배포 주기 일 평균 <strong class="text-primary">3회 이상</strong>으로 단축.
+                </p>
+</div>
+</section>
+<!-- Divider -->
+<div class="w-full h-[1px] bg-outline-variant my-xl"></div>
+<!-- Featured Image / Visual Anchor -->
+<section class="mb-xl">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A clean, minimalist workspace scene featuring a high-end laptop on a light oak desk. The background consists of a soft-focus minimalist interior with neutral tones of gray and white. Dramatic but soft morning sunlight creates gentle shadows, emphasizing a calm and productive atmosphere. The overall style is modern light-mode, echoing a professional software developer's studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAiyK7YXkntcr1e5mtiA4abt6J9WGF9X9zIKLlo7ylm1WQdSYJQ5fB1Ph9J5RXosPIOUbJ2I-XewJ6A8LUY0dJVDFSXNrjCVGLnDPFZ1xeBrQbCyZZojv9Sw2geYkte3vxDtqB6ceiVa0P3x15c0KTXjC9ra7GcptvtUXbVe4NjiLzwkBDnKLhJRevs3VRw26zyPB1hxlBFEpIIgdlWMAmVDvGz4as0mzVl1BMf_4mQ7J9K_U9RBDdQg2xSapA7hA-Ep_iS8fcqow"/>
+<div class="absolute bottom-lg left-lg z-20 text-on-primary">
+<span class="font-label text-label uppercase tracking-widest opacity-80">Featured Work</span>
+<h2 class="font-h2 text-h2 mt-xs">Next-Gen SaaS Platform</h2>
+</div>
+</div>
+</section>
+<!-- Skill Stack Section -->
+<section class="mb-xl">
+<h3 class="font-h3 text-h3 mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">stack</span>
+                기술 스택
+            </h3>
+<div class="flex flex-wrap gap-md">
+<!-- Skill Badge -->
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">javascript</span>
+<span class="font-body-sm text-body-sm font-medium">JavaScript (ES6+)</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">code</span>
+<span class="font-body-sm text-body-sm font-medium">TypeScript</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">web</span>
+<span class="font-body-sm text-body-sm font-medium">React / Next.js</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">storage</span>
+<span class="font-body-sm text-body-sm font-medium">Node.js (Express)</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">database</span>
+<span class="font-body-sm text-body-sm font-medium">PostgreSQL / MongoDB</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">cloud</span>
+<span class="font-body-sm text-body-sm font-medium">AWS (EC2, S3, Lambda)</span>
+</div>
+<div class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="font-body-sm text-body-sm font-medium">Docker / K8s</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-xl border-t border-outline-variant mt-xl bg-transparent">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="font-label text-label text-secondary">© 2024 Personal Portfolio. Built with minimalist intent.</div>
+<div class="flex gap-lg">
+<a class="text-secondary hover:text-primary underline underline-offset-4 transition-all font-label text-label cursor-pointer opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-secondary hover:text-primary underline underline-offset-4 transition-all font-label text-label cursor-pointer opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-secondary hover:text-primary underline underline-offset-4 transition-all font-label text-label cursor-pointer opacity-80 hover:opacity-100" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Simple scroll reveal effect for sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

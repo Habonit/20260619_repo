@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio - Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e2dfdb",
+                    "surface-container-low": "#f3f3f3",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary": "#21201a",
+                    "on-secondary-container": "#636360",
+                    "primary-fixed-dim": "#cbc6bd",
+                    "secondary-fixed": "#e5e2de",
+                    "inverse-primary": "#cbc6bd",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#1d1c16",
+                    "inverse-on-surface": "#f1f1f1",
+                    "background": "#f9f9f9",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#37352f",
+                    "on-primary-fixed-variant": "#494740",
+                    "on-surface-variant": "#49473f",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c8c6c3",
+                    "on-error": "#ffffff",
+                    "tertiary": "#002141",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004884",
+                    "secondary": "#5f5e5c",
+                    "on-secondary-fixed": "#1b1c1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#615e57",
+                    "on-primary-container": "#a19d95",
+                    "outline-variant": "#cbc6bc",
+                    "tertiary-container": "#003666",
+                    "on-error-container": "#93000a",
+                    "outline": "#7a776e",
+                    "surface-dim": "#dadada",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-secondary-fixed-variant": "#474744",
+                    "inverse-surface": "#2f3131",
+                    "on-background": "#1a1c1c",
+                    "surface-container": "#eeeeee",
+                    "primary-fixed": "#e7e2d9",
+                    "surface": "#f9f9f9",
+                    "on-tertiary-fixed": "#001c39",
+                    "on-tertiary-container": "#50a0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "sidebar-width": "240px",
+                    "lg": "24px",
+                    "container-max": "900px"
+            },
+            "fontFamily": {
+                    "h3": ["Inter"],
+                    "h1-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono": ["Courier Prime"],
+                    "h1": ["Inter"],
+                    "h2": ["Inter"],
+                    "label": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1-mobile": ["30px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .notion-input {
+            border: 1px solid #e9e9e8;
+            transition: border-color 0.2s ease;
+        }
+        .notion-input:focus {
+            outline: none;
+            border-color: #37352f;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary-container">
+<!-- Top Navigation (Contextually Suppressed for Login, but included for Brand Identity if needed - Hidden on mobile per rules) -->
+<header class="w-full sticky top-0 z-50 bg-background dark:bg-background border-b border-outline-variant dark:border-on-primary-fixed-variant md:block hidden">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
+<div class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed-dim">
+                Portfolio
+            </div>
+<nav class="flex gap-md">
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded cursor-pointer" href="#">Home</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded cursor-pointer" href="#">About</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded cursor-pointer" href="#">Projects</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-[calc(100vh-140px)] flex items-center justify-center px-md py-xl">
+<div class="w-full max-w-[400px] flex flex-col gap-xl">
+<!-- Branding/Identity -->
+<div class="flex flex-col items-center gap-sm">
+<div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="lock">lock</span>
+</div>
+<h1 class="font-h1 text-h1 text-center text-primary">관리자 로그인</h1>
+<p class="font-body-sm text-body-sm text-secondary text-center">계속하려면 자격 증명을 입력하세요.</p>
+</div>
+<!-- Login Form Container (Notion Style) -->
+<form class="flex flex-col gap-md" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-secondary px-xs">아이디</label>
+<input class="notion-input w-full px-md py-sm rounded-lg font-body-sm text-body-sm bg-surface-container-lowest placeholder:text-outline" placeholder="아이디를 입력하세요" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-secondary px-xs">비밀번호</label>
+<input class="notion-input w-full px-md py-sm rounded-lg font-body-sm text-body-sm bg-surface-container-lowest placeholder:text-outline" placeholder="비밀번호를 입력하세요" type="password"/>
+</div>
+<div class="mt-md">
+<button class="w-full bg-primary-container text-on-primary py-sm rounded-lg font-body-lg font-semibold hover:opacity-90 active:opacity-70 transition-all shadow-sm">
+                        로그인
+                    </button>
+</div>
+<div class="flex justify-between items-center px-xs mt-sm">
+<div class="flex items-center gap-xs cursor-pointer group">
+<div class="w-4 h-4 border border-outline-variant rounded-sm flex items-center justify-center group-hover:bg-surface-container transition-colors"></div>
+<span class="font-label text-label text-secondary">로그인 상태 유지</span>
+</div>
+<a class="font-label text-label text-secondary hover:text-primary transition-colors" href="#">비밀번호를 잊으셨나요?</a>
+</div>
+</form>
+<!-- Callout (Instructional/Notice) -->
+<div class="bg-secondary-container/30 p-md rounded-xl flex gap-md items-start">
+<span class="text-xl">💡</span>
+<div class="flex flex-col">
+<p class="font-body-sm text-body-sm text-on-surface">권한이 없는 경우 액세스가 제한될 수 있습니다. 계정 생성이 필요한 경우 관리자에게 문의하세요.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl border-t border-outline-variant dark:border-on-primary-fixed-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="font-label text-label text-secondary dark:text-secondary-fixed-dim">
+                © 2024 Personal Portfolio. Built with minimalist intent.
+            </div>
+<div class="flex gap-md">
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">LinkedIn</a>
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">GitHub</a>
+<a class="font-label text-label text-secondary hover:text-primary underline underline-offset-4 transition-all opacity-80 hover:opacity-100 cursor-pointer" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Subtle Background Element (Notion often uses pristine white, but we add a tiny micro-interaction) -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 transition-opacity duration-1000" id="glow" style="background: radial-gradient(600px at 0px 0px, rgba(226, 223, 219, 0.4), transparent 80%);"></div>
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('glow');
+            glow.style.background = `radial-gradient(600px at ${e.clientX}px ${e.clientY}px, rgba(226, 223, 219, 0.4), transparent 80%)`;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,51 @@
+=== PAGE 1 ===
+김이삭 Email isaac.kim.ai@gmail.com
+Phone 010-2345-6789
+GitHub github.com/isaac-kim-ai
+AI Engineer · LLM / MLOps
+Blog isaac-ai.dev
+SUMMARY
+5년 차 AI 엔지니어로, LLM 기반 서비스의 설계부터 운영까지 전 주기를 담당해 왔습니다. RAG 파이프라인 구축, 모델 파인튜닝, Kubernetes 기반 모델 서빙 인프라 운영에
+강점이 있으며, Python 백엔드(FastAPI) 개발과 MLOps 자동화(CI/CD, 모델 레지스트리, 모니터링)를 통해 안정적이고 재현 가능한 AI 시스템을 구축하는 데 집중합니다.
+PERSONAL INFORMATION
+성명 김이삭 (Isaac Kim) 생년월일 1994. 03. 12
+거주지 서울특별시 강남구 병역 군필 (육군 병장 만기제대)
+희망직무 AI Engineer / LLM Engineer 희망연봉 회사 내규에 따름
+WORK EXPERIENCE
+㈜뉴럴웍스 AI Engineer (Senior) 2023. 04 ~ 재직 중
+AI 플랫폼팀 · LLM 기반 사내 지식 검색 서비스
+▸ 사내 문서 30만 건 대상 RAG 파이프라인 설계 및 구축 (검색 정확도 78% → 91% 개선)
+▸ FastAPI + LangChain 기반 LLM 게이트웨이 구축, 일 평균 12만 요청 처리
+▸ vLLM 기반 모델 서빙 최적화로 추론 지연 시간(p95) 2.1s → 0.7s 단축
+▸ Prometheus / Grafana 기반 LLM 응답 품질 및 비용 모니터링 대시보드 구축
+Python FastAPI LangChain vLLM Qdrant Kubernetes
+데이터브릿지㈜ Machine Learning Engineer 2021. 01 ~ 2023. 03
+ML 플랫폼팀 · 추천 시스템 및 모델 운영
+▸ 이커머스 상품 추천 모델(CF + 딥러닝) 개발 및 A/B 테스트로 CTR 14% 향상
+▸ MLflow 기반 모델 레지스트리 및 실험 추적 환경 구축, 팀 재현성 확보
+▸ Airflow를 활용한 일 단위 배치 학습 파이프라인 자동화
+▸ 모델 드리프트 탐지 로직 도입으로 성능 저하 사전 대응 체계 마련
+PyTorch MLflow Airflow Docker AWS SageMaker
+INTERNSHIP
+㈜코어AI랩 AI Research Intern 2020. 06 ~ 2020. 12
+▸ NLP 텍스트 분류 모델(BERT 파인튜닝) 프로토타입 개발 및 성능 벤치마킹
+▸ 데이터 라벨링 가이드라인 작성 및 학습 데이터 전처리 파이프라인 구현
+EDUCATION
+한빛대학교 대학원 · 인공지능학과 (석사) · GPA 4.1 / 4.5 2019. 03 ~ 2021. 02
+한빛대학교 · 컴퓨터공학과 (학사) · GPA 3.8 / 4.5 2013. 03 ~ 2019. 02
+CERTIFICATIONS AWARDS
+정보처리기사 2020. 08 전국 AI 해커톤 대상 2022. 11
+AWS Certified ML – Specialty 2022. 05 사내 기술혁신상 (RAG 프로젝트) 2024. 02
+SQLD (SQL 개발자) 2021. 03 Kaggle NLP 대회 상위 3% 2021. 07
+TOEIC 920 2023. 09
+TRAINING & COURSES
+LLMOps 실전 부트캠프 · 패스트캠퍼스 2024. 03
+Deep Learning Specialization · Coursera (DeepLearning.AI) 2020. 02
+Kubernetes 운영 실무 과정 · 인프런 2023. 06
+TECHNICAL SKILLS
+Language Python (주력), SQL, Bash, JavaScript (기초)
+AI / ML PyTorch, Hugging Face, LangChain, vLLM, scikit-learn
+Backend FastAPI, Flask, Pydantic, Celery, REST API
+MLOps / Infra Docker, Kubernetes, MLflow, Airflow, GitHub Actions
+Data / Vector DB PostgreSQL, Redis, Qdrant, Pinecone, Elasticsearch
+Cloud / Monitoring AWS (SageMaker, EKS, S3), Prometheus, Grafana
