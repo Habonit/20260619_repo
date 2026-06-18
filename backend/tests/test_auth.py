@@ -89,10 +89,32 @@ async def test_change_password_success(client: AsyncClient, db_session: AsyncSes
 
 @pytest.mark.asyncio
 async def test_access_protected_without_token(client: AsyncClient, db_session: AsyncSession):
-    """토큰 없이 보호된 엔드포인트 접근 시 401 에러가 반환되어야 한다."""
+    """토큰 없이 보호된 엔드포인트 접근 시 403 에러가 반환되어야 한다."""
     response = await client.post(
         "/api/v1/auth/change-password",
         json={"current_password": "admin1234", "new_password": "newpassword123"},
     )
 
-    assert response.status_code == 403  # HTTPBearer는 403 반환
+    assert response.status_code == 403  # HTTPBearer는 토큰 미제공 시 403 반환
+
+
+@pytest.mark.asyncio
+async def test_change_password_wrong_current(client: AsyncClient, db_session: AsyncSession):
+    """현재 비밀번호가 틀리면 400 에러가 반환되어야 한다."""
+    await create_test_user(db_session)
+
+    # 로그인하여 토큰 획득
+    login_response = await client.post(
+        "/api/v1/auth/login",
+        json={"username": "admin", "password": "admin1234"},
+    )
+    token = login_response.json()["access_token"]
+
+    # 잘못된 현재 비밀번호로 변경 시도
+    response = await client.post(
+        "/api/v1/auth/change-password",
+        json={"current_password": "wrongpassword", "new_password": "newpassword123"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    assert response.status_code == 400

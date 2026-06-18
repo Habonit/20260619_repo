@@ -20,20 +20,32 @@ router = APIRouter(prefix="/profile", tags=["프로필"])
 # 단일 프로필 레코드 ID (항상 1)
 PROFILE_ID = 1
 
+# 프로필이 없을 때 반환할 기본값 (seed.py 미실행 환경 대비)
+DEFAULT_PROFILE = ProfileResponse(
+    id=PROFILE_ID,
+    name="김이삭",
+    title="AI Engineer",
+    bio="포트폴리오 소개 페이지입니다.",
+    skills='[]',
+    achievements='[]',
+    github_url=None,
+    linkedin_url=None,
+    twitter_url=None,
+    resume_url=None,
+)
+
 
 @router.get("", response_model=ProfileResponse, summary="프로필 조회")
 async def get_profile(
     db: Annotated[AsyncSession, Depends(get_db)],
 ) -> ProfileResponse:
-    """포트폴리오 소유자의 프로필 정보를 조회한다."""
+    """포트폴리오 소유자의 프로필 정보를 조회한다. 데이터가 없으면 기본값을 반환한다."""
     result = await db.execute(select(Profile).where(Profile.id == PROFILE_ID))
     profile = result.scalar_one_or_none()
 
+    # 프로필이 없으면 500 대신 기본값 반환
     if not profile:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="프로필 데이터가 없습니다. seed.py를 실행해 초기 데이터를 입력하세요.",
-        )
+        return DEFAULT_PROFILE
 
     return profile
 

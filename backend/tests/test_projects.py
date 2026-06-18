@@ -141,3 +141,100 @@ async def test_get_nonexistent_project(client: AsyncClient, db_session: AsyncSes
     """존재하지 않는 프로젝트 조회 시 404 에러가 반환되어야 한다."""
     response = await client.get("/api/v1/projects/99999")
     assert response.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_get_projects_featured_only(client: AsyncClient, db_session: AsyncSession):
+    """featured_only=true 파라미터를 사용하면 is_featured=True인 항목만 반환되어야 한다."""
+    token = await get_auth_token(client, db_session)
+
+    # 일반 프로젝트 생성
+    await client.post(
+        "/api/v1/projects",
+        json={**SAMPLE_PROJECT, "title": "일반 프로젝트", "is_featured": False},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    # 주요 프로젝트 생성
+    await client.post(
+        "/api/v1/projects",
+        json={**SAMPLE_PROJECT, "title": "주요 프로젝트", "is_featured": True},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    # 전체 목록 조회 (2개)
+    all_response = await client.get("/api/v1/projects")
+    assert all_response.status_code == 200
+    assert len(all_response.json()) == 2
+
+    # featured_only=true 조회 (1개)
+    featured_response = await client.get("/api/v1/projects?featured_only=true")
+    assert featured_response.status_code == 200
+    featured_list = featured_response.json()
+    assert len(featured_list) == 1
+    assert featured_list[0]["title"] == "주요 프로젝트"
+    assert featured_list[0]["is_featured"] is True
+
+
+@pytest.mark.asyncio
+async def test_update_project_without_auth(client: AsyncClient, db_session: AsyncSession):
+    """인증 없이 프로젝트 수정 시 403 에러가 반환되어야 한다."""
+    token = await get_auth_token(client, db_session)
+
+    # 프로젝트 생성
+    create_response = await client.post(
+        "/api/v1/projects",
+        json=SAMPLE_PROJECT,
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    project_id = create_response.json()["id"]
+
+    # 인증 없이 수정 시도
+    response = await client.put(
+        f"/api/v1/projects/{project_id}",
+        json={"title": "무단 수정"},
+    )
+    assert response.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_delete_project_without_auth(client: AsyncClient, db_session: AsyncSession):
+    """인증 없이 프로젝트 삭제 시 403 에러가 반환되어야 한다."""
+    token = await get_auth_token(client, db_session)
+
+    # 프로젝트 생성
+    create_response = await client.post(
+        "/api/v1/projects",
+        json=SAMPLE_PROJECT,
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    project_id = create_response.json()["id"]
+
+    # 인증 없이 삭제 시도
+    response = await client.delete(f"/api/v1/projects/{project_id}")
+    assert response.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_update_nonexistent_project(client: AsyncClient, db_session: AsyncSession):
+    """존재하지 않는 프로젝트 수정 시 404 에러가 반환되어야 한다."""
+    token = await get_auth_token(client, db_session)
+
+    response = await client.put(
+        "/api/v1/projects/99999",
+        json={"title": "없는 프로젝트"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_delete_nonexistent_project(client: AsyncClient, db_session: AsyncSession):
+    """존재하지 않는 프로젝트 삭제 시 404 에러가 반환되어야 한다."""
+    token = await get_auth_token(client, db_session)
+
+    response = await client.delete(
+        "/api/v1/projects/99999",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 404

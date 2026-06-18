@@ -2,8 +2,7 @@
 환경변수 및 JWT 설정 모듈
 pydantic-settings를 사용하여 .env 파일과 환경변수를 읽어온다.
 """
-import os
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -30,9 +29,11 @@ class Settings(BaseSettings):
         "http://localhost:5174",
     ]
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    # Pydantic v2 방식 설정 (class Config 대신 model_config 사용)
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
 
 # 전역 설정 인스턴스

@@ -54,10 +54,14 @@ async def test_get_profile(client: AsyncClient, db_session: AsyncSession):
 
 
 @pytest.mark.asyncio
-async def test_get_profile_not_found(client: AsyncClient, db_session: AsyncSession):
-    """프로필이 없을 때 404 에러가 반환되어야 한다."""
+async def test_get_profile_default_when_not_found(client: AsyncClient, db_session: AsyncSession):
+    """프로필이 없을 때 500 대신 기본값이 반환되어야 한다."""
     response = await client.get("/api/v1/profile")
-    assert response.status_code == 404
+    # 500 에러 없이 200 OK + 기본 프로필 반환
+    assert response.status_code == 200
+    data = response.json()
+    assert "name" in data
+    assert "title" in data
 
 
 @pytest.mark.asyncio
