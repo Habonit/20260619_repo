@@ -1,0 +1,26 @@
+# Python 캐시
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# 가상환경
+.venv/
+venv/
+env/
+
+# 개발 DB (배포 시 PostgreSQL 사용)
+dev.db
+*.db
+
+# 환경변수 파일 (비밀 정보 포함)
+.env
+.env.local
+
+# pytest 캐시
+.pytest_cache/
+.coverage
+
+# IDE
+.vscode/
+.idea/
