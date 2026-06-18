@@ -20,15 +20,13 @@ DATABASE_URL = (
 )
 
 # SQLite는 check_same_thread=False 필요
-# Railway PostgreSQL은 내부 네트워크에서 인증서 없는 SSL 연결을 사용
+# Railway 내부 네트워크(postgres.railway.internal)의 PostgreSQL은 SSL을 지원하지 않아
+# SSL 업그레이드를 시도하면 "rejected SSL upgrade"로 연결이 거부된다.
+# 따라서 내부 연결에서는 ssl=False로 SSL 협상을 완전히 비활성화한다.
 if "sqlite" in DATABASE_URL:
     connect_args: dict = {"check_same_thread": False}
 elif "postgresql" in DATABASE_URL:
-    import ssl as _ssl
-    _ssl_ctx = _ssl.create_default_context()
-    _ssl_ctx.check_hostname = False
-    _ssl_ctx.verify_mode = _ssl.CERT_NONE
-    connect_args = {"ssl": _ssl_ctx}
+    connect_args = {"ssl": False}
 else:
     connect_args = {}
 

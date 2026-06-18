@@ -1,0 +1,47 @@
+# ===== 환경변수 / 시크릿 (절대 커밋 금지) =====
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# ===== 의존성 / 가상환경 =====
+node_modules/
+.venv/
+venv/
+env/
+
+# ===== 빌드 / 캐시 산출물 =====
+dist/
+dist-ssr/
+**/.vite/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# ===== 로컬 DB =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== 배포 도구 로컬 설정 =====
+.vercel/
+**/.vercel/
+.railway/
+
+# ===== 로컬 개발 아티팩트 =====
+.playwright-mcp/
+.claude/settings.local.json
+
+# ===== E2E / 검증 스크린샷 (루트에 한함) =====
+/*.png
+
+# ===== 개인 문서 / 강의 자료 (저장소 비공개 대상) =====
+/*.pdf
+클로드코드_심화강의_교안.md
+
+# ===== OS / 에디터 =====
+.DS_Store
+Thumbs.db
+*.swp
