@@ -20,11 +20,15 @@ DATABASE_URL = (
 )
 
 # SQLite는 check_same_thread=False 필요
-# Railway 내부 PostgreSQL은 SSL을 지원하지 않으므로 ssl=False 필요
+# Railway PostgreSQL은 내부 네트워크에서 인증서 없는 SSL 연결을 사용
 if "sqlite" in DATABASE_URL:
     connect_args: dict = {"check_same_thread": False}
 elif "postgresql" in DATABASE_URL:
-    connect_args = {"ssl": False}
+    import ssl as _ssl
+    _ssl_ctx = _ssl.create_default_context()
+    _ssl_ctx.check_hostname = False
+    _ssl_ctx.verify_mode = _ssl.CERT_NONE
+    connect_args = {"ssl": _ssl_ctx}
 else:
     connect_args = {}
 
